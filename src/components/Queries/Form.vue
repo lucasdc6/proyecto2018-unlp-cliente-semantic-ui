@@ -16,7 +16,13 @@
         <sui-input v-model="query.description" placeholder="Descripción"/>
       </div>
       <div class="field">
-        <sui-dropdown placeholder="Seleccione una categoría" fluid selection v-model="query.category" :options="categories" />
+        <sui-dropdown
+          placeholder="Seleccione una categoría"
+          fluid
+          selection
+          v-model="query.category"
+          :options="categories"
+        />
       </div>
       <div class="field">
         <sui-button primary v-on:click="handleSubmit">Guardar</sui-button>
@@ -52,7 +58,7 @@ export default {
     fetch('https://virtserver.swaggerhub.com/lucasdc6/Proyecto2018/1.0.0/categorias')
       .then(response => response.json())
       .then((json) => {
-        this.categories = json.map(elem => ({text: elem.name, value: elem.id}));
+        this.categories = json.map(elem => ({ text: elem.name, value: elem.id }));
       })
       .catch(() => {
         this.errors = [];
